@@ -9,6 +9,7 @@ import {
   faTwitterSquare,
 } from "@fortawesome/free-brands-svg-icons";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 const TopBar = () => {
   return (
@@ -21,11 +22,35 @@ const TopBar = () => {
       </div>
       <div className="topCenter">
         <ul className="topList">
-          <li className="topListItem">HOME</li>
-          <li className="topListItem">ABOUT</li>
-          <li className="topListItem">CONTACT</li>
-          <li className="topListItem">WRITE</li>
-          <li className="topListItem">LOGOUT</li>
+          <li className="topListItem">
+            <Link style={{ textDecoration: "none", color: "inherit" }} to="/">
+              HOME
+            </Link>
+          </li>
+
+          <li className="topListItem">
+            <Link style={{ textDecoration: "none", color: "inherit" }} to="/">
+              ABOUT
+            </Link>
+          </li>
+          <li className="topListItem">
+            <Link style={{ textDecoration: "none", color: "inherit" }} to="/">
+              CONTACT
+            </Link>
+          </li>
+          <li className="topListItem">
+            <Link
+              style={{ textDecoration: "none", color: "inherit" }}
+              to="/write"
+            >
+              WRITE
+            </Link>
+          </li>
+          <li className="topListItem">
+            <Link style={{ textDecoration: "none" }} to="/">
+              LOGOUT
+            </Link>
+          </li>
         </ul>
       </div>
       <div className="topRight">

@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import TopBar from "./components/TopBar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -8,16 +9,19 @@ import Single from "./pages/Single";
 import Write from "./pages/Write";
 
 function App() {
+  const user = false;
   return (
-    <div className="App">
+    <Router>
       <TopBar />
-      {/* <Home /> */}
-      {/* <Single /> */}
-      {/* <Write /> */}
-      {/* <Settings /> */}
-      {/* <Login /> */}
-      <Register />
-    </div>
+      <Switch>
+        {!user && <Route path="/register" component={Register} />}{" "}
+        <Route path="/write" component={Write} />
+        <Route path="/login" component={Login} />
+        <Route path="/settings" component={Settings} />
+        <Route path="/post/:postId" component={Single} />
+        <Route path="/" component={Home} />
+      </Switch>
+    </Router>
   );
 }
 
