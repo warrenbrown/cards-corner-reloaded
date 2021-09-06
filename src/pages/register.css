@@ -1,0 +1,52 @@
+.register {
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url('https://media.bleacherreport.com/w_800,h_533,c_fill/br-img-article/001/195/416/ShallowCross_crop_exact.png');
+  background-size: cover;
+  align-items: center;
+}
+
+.registerForm {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.registerFormLabel {
+  margin: 10px 0;
+}
+
+.registerFormInput {
+  padding: 10px;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.registerFormSubmit {
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: lightcoral;
+  padding: 10px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+.registerLoginButton {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: teal;
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+}
+
+.registerTitle {
+  font-size: 50px;
+}
