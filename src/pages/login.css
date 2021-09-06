@@ -1,0 +1,52 @@
+.login {
+  height: calc(100vh - 50px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url('https://media.bleacherreport.com/w_800,h_533,c_fill/br-img-article/001/195/416/ShallowCross_crop_exact.png');
+  background-size: cover;
+  align-items: center;
+}
+
+.loginForm {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.loginFormLabel {
+  margin: 10px 0;
+}
+
+.loginFormInput {
+  padding: 10px;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.loginFormSubmit {
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: lightcoral;
+  padding: 10px;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+.loginFormRegister {
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  background-color: teal;
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+}
+
+.loginTitle {
+  font-size: 50px;
+}
