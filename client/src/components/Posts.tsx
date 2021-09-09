@@ -2,15 +2,23 @@ import React from "react";
 import Post from "./Post";
 import "./posts.css";
 
-const Posts = () => {
+export type AnyType = any;
+interface PostsProps {
+  posts: Array<AnyType>;
+}
+// DocumentsTable = ({ documents, gridColumnFeatureKey }: DocumentsTableProps)
+const Posts = (props: PostsProps) => {
   return (
     <div className="posts">
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+      {props.posts.map((post) => (
+        <Post
+          key={post.id}
+          title={post.title}
+          timestamp={post.createdAt}
+          categories={post.categories}
+          userName={post.username}
+        />
+      ))}
     </div>
   );
 };
