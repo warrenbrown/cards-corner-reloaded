@@ -1,9 +1,11 @@
 import React from "react";
 import "./post.css";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 export type AnyType = any;
 interface PostProps {
+  id: string;
   title: string;
   desc?: string;
   photo?: string;
@@ -19,39 +21,23 @@ const Post = (props: PostProps) => {
       <div className="postInfo">
         <div className="postCat">
           {props.categories?.map((category) => (
-            <span className="postCat">
-              {category?.name ? category.name : "No category supplied"}
+            <span key={category._id} className="postCat">
+              {category.name}
             </span>
           ))}
         </div>
-        <span className="postTitle">{props.title}</span>
+        <span className="postTitle">
+          <Link
+            style={{ textDecoration: "none", color: "inherit" }}
+            to={`/post/${props.id}`}
+          >
+            {props.title}
+          </Link>
+        </span>
         <hr />
-        <span className="postDate">{props.timestamp}</span>
+        <span className="postDate">{moment(props.timestamp).fromNow()}</span>
       </div>
-      <p className="postDescription">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, accusamus
-        saepe sunt enim corrupti consectetur magnam asperiores soluta quam
-        voluptatibus tenetur dolore impedit aliquam? Sit aspernatur accusamus
-        rem qui nihil. Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Eum, accusamus saepe sunt enim corrupti consectetur magnam asperiores
-        soluta quam voluptatibus tenetur dolore impedit aliquam? Sit aspernatur
-        accusamus rem qui nihil. Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Eum, accusamus saepe sunt enim corrupti consectetur
-        magnam asperiores soluta quam voluptatibus tenetur dolore impedit soluta
-        quam voluptatibus tenetur dolore impedit aliquam? Sit aspernatur
-        accusamus rem qui nihil. Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Eum, accusamus saepe sunt enim corrupti consectetur
-        magnam asperiores soluta quam voluptatibus tenetur dolore impedit soluta
-        quam voluptatibus tenetur dolore impedit aliquam? Sit aspernatur
-        accusamus rem qui nihil. Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Eum, accusamus saepe sunt enim corrupti consectetur
-        magnam asperiores soluta quam voluptatibus tenetur dolore impedit soluta
-        quam voluptatibus tenetur dolore impedit aliquam? Sit aspernatur
-        accusamus rem qui nihil. Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Eum, accusamus saepe sunt enim corrupti consectetur
-        magnam asperiores soluta quam voluptatibus tenetur dolore impedit
-        aliquam? Sit aspernatur accusamus rem qui nihil.
-      </p>
+      <p className="postDescription">{props.desc}</p>
     </div>
   );
 };

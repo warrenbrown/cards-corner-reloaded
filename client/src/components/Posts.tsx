@@ -6,17 +6,19 @@ export type AnyType = any;
 interface PostsProps {
   posts: Array<AnyType>;
 }
-// DocumentsTable = ({ documents, gridColumnFeatureKey }: DocumentsTableProps)
+
 const Posts = (props: PostsProps) => {
   return (
     <div className="posts">
       {props.posts.map((post) => (
         <Post
-          key={post.id}
+          key={post._id}
+          id={post._id}
           title={post.title}
           timestamp={post.createdAt}
           categories={post.categories}
           userName={post.username}
+          desc={post.desc}
         />
       ))}
     </div>
