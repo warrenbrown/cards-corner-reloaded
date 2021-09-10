@@ -1,9 +1,40 @@
 import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useParams } from "react-router-dom";
 import "./singlepost.css";
+import axios from "axios";
 
-const SinglePost = () => {
+interface Post {
+  title: string;
+  username: string;
+  desc: string;
+  photo: string;
+  categories: Array<any>;
+  timestamp: string;
+}
+interface PostParams {
+  postId: string;
+  title: string;
+}
+
+const SinglePost: React.FC = () => {
+  const location = useLocation();
+  const path = location.pathname.split("/")[2];
+  const { postId } = useParams<PostParams>();
+  const [post, setPost] = useState<Post>();
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      const result = await axios.get(`/posts/${postId}`);
+      // const res = await axios.get(`/posts/${path}`);
+      setPost(result.data);
+    };
+
+    fetchPost();
+  }, [postId]);
+
+  console.log("This is the post Id", postId);
   return (
     <div className="singlePost">
       <div className="singlePostWrapper">
@@ -13,7 +44,7 @@ const SinglePost = () => {
           alt=""
         />
         <h1 className="singlePostTitle">
-          Lorem ipsum dolor
+          {post?.title}
           <div className="singlePostEdit">
             <FontAwesomeIcon className="singlePostIcon" icon={faEdit} />
             <FontAwesomeIcon className="singlePostIcon" icon={faTrashAlt} />
@@ -21,38 +52,13 @@ const SinglePost = () => {
         </h1>
         <div className="singlePostInfo">
           <span className="singlePostAuthor">
-            Author: <b>Warren</b>
+            <Link className="link" to={`/?user=${post?.username}`}>
+              Author: <b>{post?.username}</b>
+            </Link>
           </span>
           <span className="singlePostDate">1 hr ago</span>
         </div>
-        <p className="singlePostDescription">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum
-          voluptate eaque tempora! Quis voluptatum fuga amet nobis quas repellat
-          delectus quae vero, dolorum maiores commodi, optio deleniti.
-          Perspiciatis, voluptate consequuntur. Lorem ipsum dolor sit amet,
-          consectetur adipisicing elit. Dolorum voluptate eaque tempora! Quis
-          voluptatum fuga amet nobis quas repellat delectus quae vero, dolorum
-          maiores commodi, optio deleniti. Perspiciatis, voluptate consequuntur.
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum
-          voluptate eaque tempora! Quis voluptatum fuga amet nobis quas repellat
-          delectus quae vero, dolorum maiores commodi, optio deleniti.
-          Perspiciatis, voluptate consequuntur. Lorem ipsum dolor sit amet,
-          consectetur adipisicing elit. Dolorum voluptate eaque tempora! Quis
-          voluptatum fuga amet nobis quas repellat delectus quae vero, dolorum
-          maiores commodi, optio deleniti. Perspiciatis, voluptate consequuntur.
-          Perspiciatis, voluptate consequuntur. Lorem ipsum dolor sit amet,
-          consectetur adipisicing elit. Dolorum voluptate eaque tempora! Quis
-          voluptatum fuga amet nobis quas repellat delectus quae vero, dolorum
-          maiores commodi, optio deleniti. Perspiciatis, voluptate consequuntur.
-          Perspiciatis, voluptate consequuntur. Lorem ipsum dolor sit amet,
-          consectetur adipisicing elit. Dolorum voluptate eaque tempora! Quis
-          voluptatum fuga amet nobis quas repellat delectus quae vero, dolorum
-          maiores commodi, optio deleniti. Perspiciatis, voluptate consequuntur.
-          Perspiciatis, voluptate consequuntur. Lorem ipsum dolor sit amet,
-          consectetur adipisicing elit. Dolorum voluptate eaque tempora! Quis
-          voluptatum fuga amet nobis quas repellat delectus quae vero, dolorum
-          maiores commodi, optio deleniti. Perspiciatis, voluptate consequuntur.
-        </p>
+        <p className="singlePostDescription">{post?.desc}</p>
       </div>
     </div>
   );

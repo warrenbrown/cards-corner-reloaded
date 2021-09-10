@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import Settings from "./pages/Settings";
 import Single from "./pages/Single";
 import Write from "./pages/Write";
+import "./app.css";
 
 function App() {
   const user = false;

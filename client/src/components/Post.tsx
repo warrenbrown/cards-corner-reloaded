@@ -27,10 +27,7 @@ const Post = (props: PostProps) => {
           ))}
         </div>
         <span className="postTitle">
-          <Link
-            style={{ textDecoration: "none", color: "inherit" }}
-            to={`/post/${props.id}`}
-          >
+          <Link className="link" to={`/post/${props.id}`}>
             {props.title}
           </Link>
         </span>

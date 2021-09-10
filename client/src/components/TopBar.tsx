@@ -23,31 +23,28 @@ const TopBar = () => {
       <div className="topCenter">
         <ul className="topList">
           <li className="topListItem">
-            <Link style={{ textDecoration: "none", color: "inherit" }} to="/">
+            <Link className="link" to="/">
               HOME
             </Link>
           </li>
 
           <li className="topListItem">
-            <Link style={{ textDecoration: "none", color: "inherit" }} to="/">
+            <Link className="link" to="/">
               ABOUT
             </Link>
           </li>
           <li className="topListItem">
-            <Link style={{ textDecoration: "none", color: "inherit" }} to="/">
+            <Link className="link" to="/">
               CONTACT
             </Link>
           </li>
           <li className="topListItem">
-            <Link
-              style={{ textDecoration: "none", color: "inherit" }}
-              to="/write"
-            >
+            <Link className="link" to="/write">
               WRITE
             </Link>
           </li>
           <li className="topListItem">
-            <Link style={{ textDecoration: "none" }} to="/">
+            <Link className="link" to="/">
               LOGOUT
             </Link>
           </li>
