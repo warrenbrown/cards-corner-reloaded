@@ -2,10 +2,16 @@
   height: calc(100vh - 50px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  background-image: url('https://media.bleacherreport.com/w_800,h_533,c_fill/br-img-article/001/195/416/ShallowCross_crop_exact.png');
-  background-size: cover;
   align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)),
+    url("https://images.pexels.com/photos/768473/pexels-photo-768473.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+  background-size: cover;
+}
+
+.loginTitle {
+  font-size: 50px;
 }
 
 .loginForm {
@@ -14,28 +20,32 @@
   flex-direction: column;
 }
 
-.loginFormLabel {
+.loginForm>label {
   margin: 10px 0;
 }
 
-.loginFormInput {
+.loginInput {
   padding: 10px;
   background-color: white;
   border: none;
-  border-radius: 5px;
 }
 
-.loginFormSubmit {
+.loginButton {
   margin-top: 20px;
   cursor: pointer;
   background-color: lightcoral;
-  padding: 10px;
   border: none;
   color: white;
-  border-radius: 5px;
+  border-radius: 10px;
+  padding: 10px;
 }
 
-.loginFormRegister {
+.loginButton:disabled {
+  cursor: not-allowed;
+  background-color: rgb(252, 173, 173);
+}
+
+.loginRegisterButton {
   position: absolute;
   top: 60px;
   right: 20px;
@@ -45,8 +55,4 @@
   padding: 10px;
   color: white;
   border-radius: 10px;
-}
-
-.loginTitle {
-  font-size: 50px;
 }
